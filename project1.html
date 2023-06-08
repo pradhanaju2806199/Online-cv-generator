@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online CV Generator</title>
+    <link rel="stylesheet" href="F:\html\project\bootstrap-4.6.1-dist\css\bootstrap.min.css">
+    <link rel="stylesheet" href="F:\html\project\project1.css">
+    <script src="F:\html\project\project1.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+<!-- CV-form -->
+    <div class="container bg-dark my-2"id="cv-form">
+<h3 class="text-center text-white">CV Generator</h3>
+<h5 class="text-center text-white">by quick CV</h5>
+<div class="row">
+<div class="col col-sm-6" style="background-color: rgb(203, 200, 228);">
+    <!-- first column -->
+    <h3 class="text-center">Personal Information</h3>
+    <div class="form-group">
+        <label for="NameField"><b>NAME</b></label>
+        <input type="text" class="form-control" placeholder="Enter here" id="NameField">
+    </div>
+
+    <div class="form-group">
+        <label for="NumberField"><b>MOBILE NUMBER</b></label>
+        <input type="number" id="NumberField" class="form-control" placeholder="Enter here">
+    </div>
+
+    <div class="form-group">
+        <label for="EmailField"><b>EMAIL ADDRESS</b></label>
+        <input type="email" id="EmailField" class="form-control" placeholder="Enter here">
+    </div>
+
+    <div class="form-group">
+        <label for="AddressField"><b>ADDRESS</b></label>
+        <textarea name="" id="AddressField" rows="3" class="form-control"placeholder="Enter Here"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for=""><b>CHOOSE YOUR PROFILE PICTURE</b></label>
+        <input type="file" id="ImageField" class="form-control">
+    </div>
+    <p class="text-secondary text-dark text-center">important links</p>
+    <div class="form-group">
+        <label for="FacebookField"><b>FACEBOOK</b></label>
+        <input type="url" id="FacebookField" class="form-control" placeholder="Enter here">
+    </div>
+
+    <div class="form-group">
+        <label for="InstagramField"><b>INSTAGRAM</b></label>
+        <input type="url" id="InstagramField" class="form-control" placeholder="Enter here">
+    </div>
+
+    <div class="form-group">
+        <label for="LinkedinField"><b>LINKED IN</b></label>
+        <input type="url" id="LinkedinField" class="form-control" placeholder="Enter here">
+    </div>
+</div>
+<div class="col col-sm-6" style="background-color: rgb(203, 200, 228);">
+    <!-- second column -->
+    <h3 class="text-center">Professional Information</h3>
+
+    <div class="form-group">
+        <label for=""><b>OBJECTIVE</b></label>
+        <textarea name="" id="ObjectiveField" rows="3" class="form-control"placeholder="Enter Here"></textarea>
+    </div>
+
+    <div class="form-group" id="WorkExperience">
+        <label for=""><b>WORK EXPERIENCE</b></label>
+        <textarea name="" id="" rows="3" class="form-control WeField" placeholder="Enter Here"></textarea>
+
+        <!-- new text area will create here dynamically -->
+        <div class="form-group text-center" id="WorkExperienceAddButton">
+            <button onclick="AddNewWorkExperience();" class="btn btn-dark">Add</button>
+         </div>
+    </div>
+
+    <div class="form-group" id="aq">
+        <label for=""><b>ACADEMIC QUALIFICATION</b></label>
+        <textarea name="" id="" rows="3" class="form-control AqField"placeholder="Enter Here"></textarea>
+        <!-- the new node will be insert here -->
+
+        <div class="form-group text-center" id="AqAddButton">
+            <button onclick="AddNewAq()" class="btn btn-dark">Add</button>
+         </div>
+    </div>
+<!-- skill -->
+    <div class="form-group" id="s">
+        <label for=""><b>SKILL</b></label>
+        <textarea name="" id="" rows="3" class="form-control SField"placeholder="Enter Here"></textarea>
+        <!-- the new node will be insert here -->
+
+        <div class="form-group text-center" id="SAddButton">
+            <button onclick="AddNewS()" class="btn btn-dark">Add</button>
+         </div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="NameField"><b>MAIN PROFESSION</b></label>
+        <input type="text" class="form-control" placeholder="Eg:-web developer,software engineering" id="MP">
+    </div>
+
+</div>
+</div>
+<div class="container text-center">
+    <button onclick="GenerateCV();"class="btn btn-dark btn-lg" style="border-color: black; border-width: thick;">Generate CV</button>
+</div>
+</div>
+<!-- CV template -->
+<div class="container my-5" id="cv-template" style="background-color: rgb(203, 200, 228);">
+<!-- <div class="row"></div> -->
+
+<!-- <div class="col col-sm-3 text-center text-white" style="background-color: rgb(7, 173, 29);"> -->
+<!-- first template column -->
+<!-- image-fluid gives the exact size at the exact place to the imas -->
+<div class="row">
+
+    <div class="col col-sm-8" style="background-color: rgb(44, 46, 44)"><h1 class="text-center text-white py-3" style="font-size: 100px;" id="NameT1">Aju pradhan</h1>
+        <h1 class="text-center text-white" id="MPT">specialist/main profession/excellence</h1>
+    </div>
+    <div class="col col-sm-4" style="background-color: rgb(44, 46, 44)"><div class="text"><img src="PicsArt_01-17-01.37.20.jpg" id="ImageT" class="img-fluid rounded-circle my-3"alt="">
+    </div>
+</div>
+</div>
+<!-- objective -->
+<div class="text-center head"><h5>OBJECTIVE</h5></div>
+<br>
+<p id="ObjectiveT">
+    I'M HARD WORKING
+</p>
+<!-- work experience -->
+<div class="text-center head"><h5>EXPERIENCE</h5></div>
+<br>
+<ul id="wet">
+    <li>a</li>
+    </ul>
+<!-- ACADEMIC QUALIFICATION -->
+<div class="text-center head"><h5>ACADEMIC QUALIFICATION</h5></div>
+<br>
+<ul id='aqt'>
+    <li>b</li>
+    </ul>
+<!-- SKILLS -->
+<div class="text-center head"><h5>SKILLS</h5></div>
+<br>
+<ul id='st'>
+    <li>c</li>
+</ul>
+<!-- contact details -->
+<div class="text-center head"><h5>CONTACT DETAILS</h5></div>
+<br>
+<div class="row">
+
+    <div class="col col-sm-6">
+        <div class="text-white text-left"><kbd>Contact No:</kbd></div>
+    <p id="NumberT" style="color: rgb(17, 16, 16);">+91-9938181086</p>
+    <hr color="white">
+    <div class="text-white text-left"><kbd>Email Address</kbd></div>
+    <a href="#" id="EmailT" style="color: rgb(17, 16, 16);">email</a>
+    <hr color="white">
+    <div class="text-white text-left"><kbd>Address</kbd></div>
+    <p id="AddressT" style="color: rgb(17, 16, 16);">address</p>
+    </div>
+    <div class="col col-sm 6"><div class="text-white text-left"><kbd>Facebook Link</kbd></div>
+    <a href="#" id="FacebookT" style="color: rgb(17, 16, 16);">facebook</a>
+    <hr color="white">
+    <div class="text-white text-left"><kbd>Instagram Link</kbd></div>
+    <a href="#" id="InstagramT" style="color: rgb(17, 16, 16);">Instagram</a>
+    <hr color="white">
+    <div class="text-white text-left"><kbd>Linkedin</kbd></div>
+    <a href="#" id="LinkedinT" style="color: rgb(17, 16, 16);">linkedin</a></div>
+
+</div>
+
+
+<!-- </div> -->
+
+<!-- </div> -->
+</div>
+<div id="EditCV" class="container text-center">
+    <button onclick="EditCV()" class="btn btn-dark">Edit CV</button>
+</div>
+<div id="Download" class="container text-center">
+    <button id='download' class="btn btn-dark">Download</button>
+</div>
+</body>
+</html>
